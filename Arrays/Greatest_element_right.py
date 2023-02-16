@@ -13,7 +13,9 @@ class Solution(object):
         """
         max_nums = [-1] * len(arr)
         max_seen = -1
+        #start from the end, stop at the second last element, with step size of -1
         for i in range(len(arr)-1, 0, -1):
+            #keeping track of max element
             if(arr[i] > max_seen):
                 max_seen = arr[i]
             max_nums[i-1] = max_seen
