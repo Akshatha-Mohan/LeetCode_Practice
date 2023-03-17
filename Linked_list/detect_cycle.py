@@ -6,7 +6,7 @@ There is a cycle in a linked list if there is some node in the list that can be 
 Do not modify the linked list.
 """
 
-
+#HASHMAP
 
 # Definition for singly-linked list.
 # class ListNode(object):
@@ -30,7 +30,42 @@ class Solution(object):
                 curr = curr.next
         return None
 
-      
+    
+    #FLOYD'S CYCLE
+    
+    # Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def intersectCycle(self, head):
+        slow = fast = head
+        while(fast and fast.next):
+            slow = slow.next
+            fast = fast.next.next
+            if(slow == fast):
+                return fast
+        return None
+
+    def detectCycle(self, head):
+        if head == None:
+            return None
+
+        intersect = self.intersectCycle(head)
+        if intersect is None:
+            return None
+        
+        ptr1 = head
+        ptr2 = intersect
+
+        while(ptr1 != ptr2):
+            ptr1 = ptr1.next
+            ptr2 = ptr2.next
+        return ptr1
+        
+
       
       
       
